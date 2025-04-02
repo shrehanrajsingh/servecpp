@@ -3,7 +3,8 @@
 #include <iostream>
 
 /* custom headers  */
-#include <rsvector.hpp>
+//#include <rsvector.hpp>
+#include <rsstring.hpp>
 
 #endif
 
