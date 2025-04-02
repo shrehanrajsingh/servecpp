@@ -3,3 +3,4 @@ build/
 *.d
 *.o
 .DS_Store
+*.vim
