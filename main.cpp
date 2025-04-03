@@ -14,7 +14,7 @@ int
 main (int argc, const char *argv[]) 
 {
     //test_f();
-    Server s(8000);
+    ServerCustom s;
     s.listen();
     s.accept();
 }

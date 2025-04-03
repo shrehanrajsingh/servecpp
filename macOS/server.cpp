@@ -39,12 +39,18 @@ Server::_get_read_ns_buffer(int ns, char *buf)
      return ::read(ns, buf, 1024 * sizeof(char));
 }
 
+int
+Server::_start_listen_routine()
+{
+    return ::listen(fd, 3);
+}
+
 void
 Server::listen()
 {
-    if (::listen(fd, 3) < 0)
+    if (_start_listen_routine())
     {
-        perror("Listen failed");
+        perror("listen failed");
         close(fd);
         exit(-1);
     }
@@ -71,18 +77,14 @@ Server::accept()
     read(ns);
 }
 
-String
+void
 Server::read(int ns)
 {
     char buffer[1024];
     int br = 0;
-    String res;
 
     while ((br = _get_read_ns_buffer(ns, (char *)buffer)) > 0)
     {
-        for (int i = 0; i < br; ++i)
-            res.push_back(buffer[i]);
-        
         buffer[br - 1] = '\0';
         send(
             ns, 
@@ -90,8 +92,6 @@ Server::read(int ns)
             + "\" from client " + ns + '\n'
         );
     }
-
-    return res;
 }
 
 void
