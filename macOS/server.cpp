@@ -45,6 +45,13 @@ Server::_start_listen_routine()
     return ::listen(fd, 3);
 }
 
+int
+Server::_accept_routine()
+{
+    int addrlen = sizeof(address);
+    return ::accept(fd, (struct sockaddr *)&address, (socklen_t *)addrlen);
+}
+
 void
 Server::listen()
 {

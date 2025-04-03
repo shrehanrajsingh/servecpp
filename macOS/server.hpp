@@ -21,6 +21,7 @@ protected:
 
     int _get_read_ns_buffer(int, char *);
     int _start_listen_routine();
+    int _accept_routine();
 
 public:
     Server();
@@ -35,7 +36,8 @@ public:
     ~Server();
 };
 
-class ServerCustom: public Server
+/* an example of a custom server */
+class ServerCustom: Server
 {
 public:
     ServerCustom(): Server(8000) {};
@@ -56,9 +58,8 @@ public:
     void
     accept()
     {
-        int addrlen = sizeof(address);
-        int ns = ::accept(fd, (struct sockaddr *)&address, (socklen_t *)&addrlen);
-        
+        int ns = _accept_routine();
+
         if (ns < 0)
         {
             perror("accept failed");
