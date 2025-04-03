@@ -4,7 +4,8 @@
 
 /* custom headers  */
 //#include <rsvector.hpp>
-#include <rsstring.hpp>
+
+#include "macOS/server.hpp"
 
 #endif
 

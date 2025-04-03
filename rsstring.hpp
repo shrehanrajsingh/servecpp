@@ -44,7 +44,19 @@ public:
         return val[i];
     }
 
+    int get_size() const { return val.get_size(); }
+
     inline friend std::ostream &operator<<(std::ostream &, String &);
+
+    void push_back(char v) { val.push_back(v);  }
+
+    char *to_string() const;
+    
+    /* '+' operator overloads */
+    String operator+(const String &);
+    String operator+(const char *);
+    String operator+(const char); // essentially a push_back
+    String operator+(int); // convert int to string and append
 
     ~String() = default;
 };
@@ -53,8 +65,10 @@ public:
 inline std::ostream &
 operator<<(std::ostream &out, String &rhs)
 {
-    out << "String { len: " << rhs.val.getSize() << ", val: " << rhs.val << " }";
-    //out << "String: ";
+    out << "String { len: " << rhs.val.get_size() << " }";
+    
+    for (int i = 0; i < rhs.val.get_size(); ++i)
+        out << rhs.val[i];
     return out;
 }
 

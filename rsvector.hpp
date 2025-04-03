@@ -85,7 +85,7 @@ public:
         v[size++] = val;
     }
 
-	int getSize() const { return size; }
+	int get_size() const { return size; }
 
     T &operator[](int i)
     {

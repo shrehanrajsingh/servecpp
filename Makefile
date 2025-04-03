@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -I. -std=c++17 -MMD -MP
 
-SRC = $(wildcard *.cpp)
-HEADERS = $(wildcard *.hpp)
+SRC = $(shell find . -type f -name "*.cpp")
+HEADERS = $(shell find . -type f -name "*.hpp")
 OBJ = $(SRC:.cpp=.o)
 DEP = $(SRC:.cpp=.d)
 
@@ -22,3 +22,7 @@ clean:
 	rm -f $(OBJ) $(TARGET)
 
 rebuild: clean all
+
+#kill ports
+kp:
+	kill -9 $(lsof -i :8000)
