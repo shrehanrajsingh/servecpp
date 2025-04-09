@@ -1,7 +1,8 @@
+#pragma once
+
 #if !defined(SERVER_H)
 
 #include <iostream>
-#include <thread>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
@@ -92,6 +93,7 @@ public:
     {
         char *rr = resp.to_string();
         ::send(ns, rr, strlen(rr), 0);
+        delete rr;
     }
 };
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #if !defined(RSVECTOR_H)
 
 #include <iostream>

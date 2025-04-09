@@ -1,3 +1,5 @@
+#pragma once
+
 #if !defined(RSSTRING_H)
 
 #include <iostream>

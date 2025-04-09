@@ -1,3 +1,5 @@
+#pragma once
+
 #if !defined(MAIN_H)
 
 #include <iostream>
@@ -6,6 +8,7 @@
 //#include <rsvector.hpp>
 
 #include "macOS/server.hpp"
+#include "macOS/th.hpp"
 
 #endif
 

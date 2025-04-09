@@ -36,7 +36,7 @@ Server::Server(int _Port)
 int
 Server::_get_read_ns_buffer(int ns, char *buf)
 {
-     return ::read(ns, buf, 1024 * sizeof(char));
+    return ::read(ns, buf, 1024 * sizeof(char));
 }
 
 int
@@ -49,7 +49,7 @@ int
 Server::_accept_routine()
 {
     int addrlen = sizeof(address);
-    return ::accept(fd, (struct sockaddr *)&address, (socklen_t *)addrlen);
+    return ::accept(fd, (struct sockaddr *)&address, (socklen_t *)&addrlen);
 }
 
 void
